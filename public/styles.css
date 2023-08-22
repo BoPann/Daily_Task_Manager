@@ -1,0 +1,33 @@
+
+h1 {
+    text-align: center;
+}
+
+body {
+    font-style: italic;
+    background-color: #F8F0E5;
+    color: #61677A;
+}
+footer {
+padding-top: 50px;
+margin-top: auto;
+bottom: 0px;
+width: 100%;
+text-align: center;
+
+}
+
+form {
+    font-size: 150%;
+    margin-top: 100px;
+    padding: 20px;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-size: 150%;
+    color: #040D12;
+    /* border: solid green; */
+}
+

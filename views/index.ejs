@@ -1,8 +1,25 @@
 <%- include ("partials/header.ejs")  %>
 
 <body>
+    <link rel="stylesheet" href="/public/styles.css">
     <h1>To Do List</h1>
     
-</body>
+    <!-- This is the text box -->
+    <div class="forms">
+        <form action="/submit" method="POST">
+            <input type="text" name="item"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
+    <!-- This is the new list created -->
+    <div class="list">
+        <% if (locals.itemList) { %>
+            <% for (const e of itemList) { %>
+            <p><%= e %></p>
+            <% }; %>
+        <% } %>
+    </div>
+
+</body>
 <%- include ("partials/footer.ejs")  %>
