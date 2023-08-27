@@ -17,17 +17,42 @@ text-align: center;
 
 }
 
-form {
+
+.inputBox form {
     font-size: 150%;
     margin-top: 100px;
     padding: 20px;
     text-align: center;
 }
 
-p {
+.itemBox{
+    font-size: 150%;
+    padding:20px;
     text-align: center;
+}
+
+
+.tasks {
+    display: inline-block;
+    text-align: left;
+    font-size: 150%;
+    color: #040D12;
+    width:40%;
+    border: solid yellow;
+}
+
+.individual {
+    border: solid green;
+    width: 80%;
+}
+
+p {
+
     font-size: 150%;
     color: #040D12;
     /* border: solid green; */
 }
 
+
+
+  
