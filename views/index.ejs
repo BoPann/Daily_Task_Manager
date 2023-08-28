@@ -15,17 +15,18 @@
     <!-- This is the new list created -->
     <div class="itemBox">
         <p><%= `Incomplete: ${num}` %></p>
-        <div class="tasks">
+        <div class="tasks-container">
         <% if (locals.itemList) { %>
             <% for (var i = 0; i < itemList.length; i++) { %>
                 <form action="/remove" method="POST">
+                    <div class="task">
                     <input type="hidden" name="targetItem" value="<%= i %>">
                     <button name="subject" type="submit" class="btn btn-outline-danger" value="HTML">Done</button>
-                    <label class="individual"><%= itemList[i] %></label><br>
+                    <label class="task task2"><%= itemList[i] %></label><br>
+                    </div>
                 </form>
             <% }; %>
         <% } %>
-    
         </div>
     </div>
 </body>

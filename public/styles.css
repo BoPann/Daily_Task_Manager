@@ -9,7 +9,7 @@ body {
     color: #61677A;
 }
 footer {
-padding-top: 50px;
+padding-top: 10%;
 margin-top: auto;
 bottom: 0px;
 width: 100%;
@@ -20,30 +20,36 @@ text-align: center;
 
 .inputBox form {
     font-size: 150%;
-    margin-top: 100px;
-    padding: 20px;
+    margin-top: 5%;
     text-align: center;
 }
 
 .itemBox{
     font-size: 150%;
-    padding:20px;
     text-align: center;
+    /* background-color: grey; */
+    
 }
 
 
-.tasks {
+.tasks-container {
     display: inline-block;
     text-align: left;
-    font-size: 150%;
+    font-size: 100%;
     color: #040D12;
-    width:40%;
-    border: solid yellow;
+
+    /* border: solid yellow; */
 }
 
-.individual {
-    border: solid green;
-    width: 80%;
+.task{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1%;
+}
+
+.task2 {
+    padding-left: 2%;
 }
 
 p {
@@ -53,6 +59,36 @@ p {
     /* border: solid green; */
 }
 
+.itemBox p {
+    padding:1.5%;
+    background-color: aquamarine;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        font-size: 120%; /* Adjust font size for better readability on small devices */
+    }
+
+    .inputBox form {
+        margin-top: 50px; /* Reduce top margin for the input box on small devices */
+    }
+
+    .itemBox {
+        font-size: 120%; /* Adjust font size for better readability on small devices */
+        padding: 10px; /* Reduce padding for the item box on small devices */
+    }
+
+    .tasks-container {
+        text-align: center; /* Center align task items on small devices */
+    }
+
+    .task {
+        justify-content: center; /* Center align task elements on small devices */
+        flex-direction: column; /* Stack task elements vertically on small devices */
+        margin-bottom: 20px; /* Increase margin between task items on small devices */
+    }
+}
 
 
   
