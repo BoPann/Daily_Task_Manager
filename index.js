@@ -1,37 +1,66 @@
 import express from "express";
 import bodyParser from "body-parser";
+import mongoose from "mongoose";
 
 const app = express();
 const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+mongoose.connect("mongodb://127.0.0.1:27017/todolistDB", {useNewUrlParser: true});
 
-const allItems = [];
-var nums = 0;
+//Created Schema
+const itemsSchema = new mongoose.Schema({
+  name: String
+});
 
-app.get("/", (req, res) => {
-  res.render("index.ejs", {itemList: allItems,
-                              num: nums}); 
-  });
+// create model
+const Item = mongoose.model("Item", itemsSchema);
+
+// count total
+const getCount = async () => {
+  try {
+    const count = await Item.countDocuments();
+    return count;
+  } catch (err) {
+    console.log("Error:", err);
+  }
+};
+
+
+app.get("/", async function(req, res) {
+  try {
+    const foundItems = await Item.find();
+    const total = await getCount();
+    res.render("index.ejs", {itemList: foundItems, total: total});
+  } catch (err) {
+    console.log(err);
+  }
+
+});
 
 app.post("/submit", (req, res) => {
-  nums++;
   const newItem = req.body.item;
-  allItems.push(newItem);
-  res.render("index.ejs", {itemList: allItems,
-    num: nums});
+  const item = Item ({
+    name: newItem
+  });
+
+  item.save();
+
+  res.redirect("/");
   
 });
 
 
-app.post("/remove", (req, res) => {
-  const index = req.body.targetItem;
-  nums--;
-  allItems.splice(index,1);
-  res.redirect("/");
+app.post("/remove", async (req, res) => {
+  try {
+    const id = req.body.doneItem;
+    await Item.findByIdAndDelete(id);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
 });
-
-
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
